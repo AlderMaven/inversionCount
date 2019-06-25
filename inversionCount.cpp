@@ -1,7 +1,7 @@
 //Created by Brandon Barnes
 
-#include <iostream>
-#include <stdlib.h>
+#include <iostream> //being used for cout
+#include <stdlib.h> //needed for malloc
 
 using namespace std;
 
@@ -71,7 +71,7 @@ int inversionCountLong(int array[], int size){ //O(n^2) version
 
 int inversionCount(int array[], int size){ //O(n^2) version
 	int returnValue = 0;
-	int* comparatorArray = (int *) malloc(size);
+	
 	if(size < 1){
 		return -1;
 	}
@@ -79,26 +79,18 @@ int inversionCount(int array[], int size){ //O(n^2) version
 		return 0;
 	}
 	
-	for(int i = 0; i < size; i++){
-		comparatorArray[i] = array[i];
-	}		
-	quickSort(comparatorArray, 0, size);
 	
-	for(int i = 0; i < size; i++){
-		for(int j = i; j<size; j++){
-			if(array[i]>array[j]){
-				returnValue++;
-			}
-		}
-	}
-	delete comparatorArray;
+	
+	
+	
+	//delete comparatorArray causes erroneous and inconsistent functionality
 	return returnValue;
 }
 
 int main(){
 	int array[] = {2, 4, 1, 3, 5};
-	
-	cout << inversionCountLong(array, 5)<<endl;
+	//1+2+0+0+0
+	cout << inversionCount(array, 5)<<endl;
 	
 	return 0;
 }
